@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/home.jsp</title>
+<title>/views/users/alert.jsp</title>
 </head>
 <body>
-<h3>인덱스 페이지 입니다.</h3>
+<h3>${msg }</h3>
+<a href="${redirectUri }">확인</a>
 </body>
 </html>
