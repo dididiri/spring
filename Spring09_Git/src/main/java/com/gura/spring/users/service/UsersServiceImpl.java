@@ -1,4 +1,4 @@
-package com.gura.spring.service;
+package com.gura.spring.users.service;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.spring.users.dao.UsersDao;
 import com.gura.spring.users.dto.UsersDto;
-
 // component 스켄시 bean 이 될수 있도록 
 @Component 
 public class UsersServiceImpl implements UsersService{
@@ -31,7 +30,6 @@ public class UsersServiceImpl implements UsersService{
 	@Override
 	public void update(UsersDto dto) {
 		usersDao.update(dto);
-		
 	}
 
 	@Override
@@ -57,9 +55,9 @@ public class UsersServiceImpl implements UsersService{
 		UsersDto dto=usersDao.getData(id);
 		//ModelAndView 객체를 생성해서
 		ModelAndView mView=new ModelAndView();
-		//회원정보를 "dto" 라는 키값으로 담는다. (request 에 자동으로 담긴다.)
-		mView.addObject("dto",dto);
-		//ModelAndView 객체를 리턴해준다.
+		//회원정보를 "dto" 라는 키값으로 담는다. (request 에 자동으로 담긴다)
+		mView.addObject("dto", dto);
+		//ModelAndView 객체를 리턴해준다. 
 		return mView;
 	}
 

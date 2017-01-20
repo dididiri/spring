@@ -1,12 +1,10 @@
-package com.gura.spring.service;
+package com.gura.spring.users.service;
 
 import java.util.Map;
 
 import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.spring.users.dto.UsersDto;
-
-
 
 public interface UsersService {
 	public void insert(UsersDto dto);

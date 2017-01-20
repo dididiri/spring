@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.gura.spring.users.dto.UsersDto;
 
-
 // Component 스켄시 bean 으로 만들기 위한 어노테이션 
 @Repository
 public class UsersDaoImpl implements UsersDao{
@@ -31,8 +30,7 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public void update(UsersDto dto) {
-		session.update("users.update",dto);
-		
+		session.update("users.update", dto);
 	}
 
 	@Override

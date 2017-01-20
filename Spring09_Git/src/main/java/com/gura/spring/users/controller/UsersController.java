@@ -13,13 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.gura.spring.service.UsersService;
 import com.gura.spring.users.dto.UsersDto;
-
-/*
- * ModelAndView 장점 리퀘스트 같은거 담을수 있다 .
- * 
- */
+import com.gura.spring.users.service.UsersService;
 
 // component 스켄시 bean 이되고 또한 컨트롤러 역활을 할수 있도록
 @Controller
@@ -28,23 +23,24 @@ public class UsersController {
 	@Autowired
 	private UsersService usersService;
 	
-	// "users/private/update.do" 개인정보 수정 요청 처리
+	// "/users/private/update.do" 개인정보 수정 요청 처리
 	@RequestMapping("/users/private/update")
-	public ModelAndView update(@ModelAttribute UsersDto dto,HttpServletRequest request){
+	public ModelAndView update(@ModelAttribute UsersDto dto, 
+			HttpServletRequest request){
 		usersService.update(dto);
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("msg", dto.getId()+" 님 회원정보 수정했습니다.");
 		String path=request.getContextPath()+"/users/private/info.do";
-		mView.addObject("redirectUri",path );
+		mView.addObject("redirectUri", path);
 		mView.setViewName("users/alert");
 		return mView;
 	}
 	
-	// "/users/private/updateform.do" 개인정보 수정 폼 요청 처리
+	// "/users/private/updateform.do" 개인정보 수정 폼 요청 처리 
 	@RequestMapping("/users/private/updateform")
-	public ModelAndView updateFrom(HttpSession session){
+	public ModelAndView updateForm(HttpSession session){
 		//1. 세션에서 아이디 정보를 읽어온다.
-		String id=(String)session.getAttribute("id");
+		String id = (String)session.getAttribute("id");
 		//2. 수정할 회원의 정보를 담고 있는 ModelAndView 객체를 얻어온다.
 		ModelAndView mView=usersService.getData(id);
 		//3. forward 이동할 정보를 담아서
@@ -64,14 +60,14 @@ public class UsersController {
 		mView.setViewName("users/private/info");
 		//4. ModelAndView 객체를 리턴해준다.
 		return mView;
-	}  
-	  
+	}
+	
 	// "/users/signout.do" 로그 아웃 요청 처리
 	@RequestMapping("/users/signout")
 	public ModelAndView signout(HttpSession session){
 		//세션 초기화
 		//session.invalidate();
-		//세션에서 아이디 정보 삭제   
+		//세션에서 아이디 정보 삭제 
 		session.removeAttribute("id");
 		ModelAndView mView=new ModelAndView();
 		mView.addObject("msg", "로그 아웃 되었습니다.");
