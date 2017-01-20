@@ -37,8 +37,7 @@ public class UsersDaoImpl implements UsersDao{
 
 	@Override
 	public void delete(String id) {
-		// TODO Auto-generated method stub
-		
+		session.delete("users.delete", id);
 	}
 
 	@Override
