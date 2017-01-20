@@ -30,7 +30,7 @@ public class UsersServiceImpl implements UsersService{
 
 	@Override
 	public void update(UsersDto dto) {
-		// TODO Auto-generated method stub
+		usersDao.update(dto);
 		
 	}
 
