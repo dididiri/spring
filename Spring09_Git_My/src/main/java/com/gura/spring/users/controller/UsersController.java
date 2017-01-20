@@ -16,7 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.gura.spring.service.UsersService;
 import com.gura.spring.users.dto.UsersDto;
 
-
+/*
+ * ModelAndView 장점 리퀘스트 같은거 담을수 있다 .
+ * 
+ */
 
 // component 스켄시 bean 이되고 또한 컨트롤러 역활을 할수 있도록
 @Controller
@@ -30,8 +33,12 @@ public class UsersController {
 	public ModelAndView info(HttpSession session){
 		//1. 세션에 저장된 id 정보를 읽어온다.
 		String id = (String)session.getAttribute("id");
-		
-		return null;
+		//2. UsersDto 가 담긴 ModelAndView 객체를 리턴 받는다.
+		ModelAndView mView=usersService.getData(id);
+		//3. forward 이동할 경로를 담고
+		mView.setViewName("users/private/info");
+		//4. ModelAndView 객체를 리턴해준다.
+		return mView;
 	}  
 	  
 	// "/users/signout.do" 로그 아웃 요청 처리

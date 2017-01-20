@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.gura.spring.users.dao.UsersDao;
 import com.gura.spring.users.dto.UsersDto;
@@ -48,6 +49,18 @@ public class UsersServiceImpl implements UsersService{
 		map.put("canUse", canUse);
 		//Map 리턴해주기 
 		return map;
+	}
+
+	@Override
+	public ModelAndView getData(String id) {
+		//Dao 를 이용해서 회원정보를 얻어온다.
+		UsersDto dto=usersDao.getData(id);
+		//ModelAndView 객체를 생성해서
+		ModelAndView mView=new ModelAndView();
+		//회원정보를 "dto" 라는 키값으로 담는다. (request 에 자동으로 담긴다.)
+		mView.addObject("dto",dto);
+		//ModelAndView 객체를 리턴해준다.
+		return mView;
 	}
 
 }
