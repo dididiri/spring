@@ -14,12 +14,13 @@
 <body>
 <h3>카페 새글 입력 페이지 입니다.</h3>
 <form action="insert.do" method="post">
+    <input type="hidden" name="writer" value="${id }" />
 	<label for="writer">작성자</label>
 	<input type="text" id="writer" 
 		value="${id }" disabled="disabled"/><br/>
 	<label for="title">제목</label>
 	<input type="text" name="title" id="title"/><br/>
-	<textarea name="ir1" id="ir1" style="width:766px;height:412px;display:none"></textarea>
+	<textarea name="content" id="ir1" style="width:766px;height:412px;display:none"></textarea>
 	<div>
 		<input type="button" onclick="submitContents(this);" value="서버로 내용 전송" />
     </div>	

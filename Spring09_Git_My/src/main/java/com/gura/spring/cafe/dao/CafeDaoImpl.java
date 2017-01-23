@@ -10,10 +10,10 @@ import com.gura.spring.cafe.dto.CafeDto;
 
 @Repository
 public class CafeDaoImpl implements CafeDao{
-    
+	
 	@Autowired
 	private SqlSession session;
-    
+	
 	@Override
 	public List<CafeDto> getList() {
 		List<CafeDto> list=session.selectList("cafe.getList");
@@ -22,8 +22,7 @@ public class CafeDaoImpl implements CafeDao{
 
 	@Override
 	public void insert(CafeDto dto) {
-		// TODO Auto-generated method stub
-		
+		session.insert("cafe.insert", dto);
 	}
 
 	@Override
