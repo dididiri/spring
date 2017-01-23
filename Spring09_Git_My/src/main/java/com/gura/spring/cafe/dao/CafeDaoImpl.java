@@ -27,8 +27,8 @@ public class CafeDaoImpl implements CafeDao{
 
 	@Override
 	public CafeDto getData(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		CafeDto dto=session.selectOne("cafe.getData", num);
+		return dto;
 	}
 
 	@Override

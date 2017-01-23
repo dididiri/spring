@@ -40,10 +40,9 @@ public class CafeController {
 	
 	@RequestMapping("/cafe/detail")
 	public ModelAndView detail(@RequestParam int num){
-	      ModelAndView mView=cafeService.getData(num);
-	      mView.setViewName("cafe/detail");
-           
-	      return mView;
+		ModelAndView mView=cafeService.getData(num);
+		mView.setViewName("cafe/detail");
+		return mView;
 	}
 	
 }
