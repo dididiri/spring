@@ -44,7 +44,22 @@ public class CafeController {
 		mView.setViewName("cafe/detail");
 		return mView;
 	}
-	
+	// 글 삭제 요청 처리
+	@RequestMapping("/cafe/private/delete")
+	public String delete(@RequestParam int num){
+	    cafeService.delete(num);
+		return "redirect:/cafe/list.do";	
+	}
+	//글 수정폼 요청 처리
+	@RequestMapping("/cafe/private/updateform")
+	public ModelAndView updateform(@RequestParam int num){
+		// 수정할 글 정보가 담긴 ModelAndView 객체를 리턴 받는다.
+		ModelAndView mView=cafeService.updateForm(num);
+		// view 페이지의 정보 설정하고
+		mView.setViewName("cafe/private/updateform");
+		// 리턴해준다.
+		return mView;
+	}
 }
 
 

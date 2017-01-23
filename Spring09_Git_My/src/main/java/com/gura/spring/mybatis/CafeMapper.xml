@@ -28,6 +28,11 @@
 		SET viewCount = viewCount+1
 		WHERE num=#{num}
 	</update>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM board_cafe
+		WHERE num=#{num}
+	</delete>
 </mapper>
 
 
