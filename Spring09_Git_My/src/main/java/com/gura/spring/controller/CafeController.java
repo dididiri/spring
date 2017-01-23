@@ -60,6 +60,12 @@ public class CafeController {
 		// 리턴해준다.
 		return mView;
 	}
+	//글 수정 요청 처리
+	@RequestMapping("/cafe/private/update")
+	public String update(@ModelAttribute CafeDto dto){
+		cafeService.update(dto);
+		return "redirect:/cafe/list.do";
+	}
 }
 
 
