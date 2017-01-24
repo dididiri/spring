@@ -7,6 +7,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="com.gura.spring.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.gura.spring.cafe.dto.CafeDto" alias="cafeDto"/>
+	
 	</typeAliases>
 
 	<!-- sql 문을 정의하고 있는 xml 문서 정보 -->
