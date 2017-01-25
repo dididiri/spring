@@ -51,6 +51,10 @@ public class UsersServiceImpl implements UsersService{
     //암호회된거 업데이트해야됨
 	@Override
 	public void update(UsersDto dto) {
+		//암호화된 비밀번호를 얻어낸다.
+		String encodedPwd=pEncoder.encode(dto.getPwd());
+		//Dto 객체에 다시 넣어준다.
+		dto.setPwd(encodedPwd);
 		usersDao.update(dto);
 		
 	}
