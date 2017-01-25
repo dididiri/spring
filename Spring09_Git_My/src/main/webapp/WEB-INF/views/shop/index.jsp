@@ -12,7 +12,7 @@
 <h3>공지 사항</h3>
 <ul>
     <c:forEach var="tmp" items="${info }">
-          <li>tmp</li>
+          <li>${tmp}</li>
     </c:forEach>
 </ul>
 <h3>메뉴</h3>
