@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,21 +15,28 @@ import com.gura.spring.users.dto.UsersDto;
 // component 스켄시 bean 이 될수 있도록 
 @Component 
 public class UsersServiceImpl implements UsersService{
+	//라이브러리 인터페이스
+	//비밀번호 인코더 객체
+	private PasswordEncoder pEncoder=new BCryptPasswordEncoder();
 	
 	@Autowired
 	private UsersDao usersDao;
-	
+	//암호화된거 집어넣고
 	@Override
 	public void insert(UsersDto dto) {
+		//암호화된 비밀번호를 얻어낸다.
+		String encodedPwd=pEncoder.encode(dto.getPwd());
+		//Dto 객체에 다시 넣어준다.
+		dto.setPwd(encodedPwd);
 		usersDao.insert(dto);
 	}
-
+    //암호화된거 비교해야되고
 	@Override
 	public boolean isValid(UsersDto dto) {
 		
 		return usersDao.isValid(dto);
 	}
-
+    //암호회된거 업데이트해야됨
 	@Override
 	public void update(UsersDto dto) {
 		usersDao.update(dto);
