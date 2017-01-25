@@ -25,20 +25,31 @@ public class ShopDaoImpl implements ShopDao{
 	}
 
 	@Override
-	public void widthDraw(String id, int money) {
-		// TODO Auto-generated method stub
+	public void withDraw(String id, int money) {
+		Map<String, Object> param=new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("money", money);
+		session.insert("shop.withDraw", param );
 		
 	}
 
 	@Override
 	public void addPoint(String id, int point) {
-		// TODO Auto-generated method stub
+		Map<String, Object> param=new HashMap<String, Object>();
+		param.put("id", id);
+		param.put("point", point);
+		session.update("shop.addPoint",param);
 		
 	}
 
-	@Override
-	public void requestDelivery() {
-		// TODO Auto-generated method stub
+    @Override
+	public void deliveryRequest() {
+    	// 트렌젝션을 관리하는 블럭에 Custom Exception 을 발생시켜서
+        // 종류별로 Exception 을 핸들링 할수 있다.
+    	
+    	//특정 조건에서 발생한다는 가정!
+    	throw new OopsException("오늘은 눈이와서 배송을 못해요!");
+		//System.out.println("배송 요청을 했습니다.");
 		
 	}
     

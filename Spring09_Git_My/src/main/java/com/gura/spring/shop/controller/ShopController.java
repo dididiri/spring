@@ -53,6 +53,18 @@ public class ShopController {
 		
 		return "shop/list";
 	}
+	
+	//상품 구입 요청 처리 //파라미터는 폼에 name속성이랑 이름이 같아야함
+	@RequestMapping("/shop/buy")
+	public ModelAndView buy(@RequestParam String id,
+			@RequestParam int price){
+		//서비스를 객체를 이용해서 상품 구입 처리 하기
+		shopservice.buy(id, price);
+		ModelAndView mView=new ModelAndView();
+		mView.addObject("price", price);
+		mView.setViewName("shop/buyresult");
+		return mView;
+	}
 }
 
 
